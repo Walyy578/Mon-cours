@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mon-cours.com - Votre plateforme d'apprentissage</title>
+    <style>
+        /* Styles généraux */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        /* En-tête */
+        header {
+            background: linear-gradient(135deg, #4b6cb7, #182848);
+            color: white;
+            padding: 20px 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 28px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo span {
+            color: #ffcc00;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 25px;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        nav ul li a:hover {
+            color: #ffcc00;
+        }
+        
+        /* Section de présentation */
+        .hero {
+            background: linear-gradient(rgba(75, 108, 183, 0.8), rgba(24, 40, 72, 0.8)), url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: 42px;
+            margin-bottom: 20px;
+        }
+        
+        .hero p {
+            font-size: 20px;
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: #ffcc00;
+            color: #182848;
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn:hover {
+            background: #ffd84d;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        /* Section objectifs */
+        .objectives {
+            padding: 80px 0;
+            background-color: white;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .section-title h2 {
+            font-size: 36px;
+            color: #182848;
+            margin-bottom: 15px;
+        }
+        
+        .section-title p {
+            color: #666;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .objectives-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .objective-card {
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s;
+        }
+        
+        .objective-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .objective-card i {
+            font-size: 40px;
+            color: #4b6cb7;
+            margin-bottom: 20px;
+        }
+        
+        .objective-card h3 {
+            font-size: 22px;
+            margin-bottom: 15px;
+            color: #182848;
+        }
+        
+        /* Section catégories */
+        .categories {
+            padding: 80px 0;
+            background-color: #f5f7fa;
+        }
+        
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+        }
+        
+        .category-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s;
+        }
+        
+        .category-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .category-header {
+            background: #4b6cb7;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .category-header h3 {
+            font-size: 22px;
+        }
+        
+        .category-content {
+            padding: 20px;
+        }
+        
+        .category-content ul {
+            list-style: none;
+        }
+        
+        .category-content ul li {
+            margin-bottom: 10px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .category-content ul li:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+        
+        .category-content ul li a {
+            color: #333;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            transition: color 0.3s;
+        }
+        
+        .category-content ul li a:hover {
+            color: #4b6cb7;
+        }
+        
+        .category-content ul li a i {
+            margin-right: 10px;
+            color: #4b6cb7;
+        }
+        
+        .concours-link {
+            display: block;
+            text-align: center;
+            background: #ffcc00;
+            color: #182848;
+            padding: 15px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 20px;
+            transition: all 0.3s;
+        }
+        
+        .concours-link:hover {
+            background: #ffd84d;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        /* Section articles */
+        .articles {
+            padding: 80px 0;
+            background-color: white;
+        }
+        
+        .articles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .article-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s;
+        }
+        
+        .article-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .article-image {
+            height: 180px;
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .article-content {
+            padding: 20px;
+        }
+        
+        .article-content h3 {
+            font-size: 20px;
+            margin-bottom: 10px;
+            color: #182848;
+        }
+        
+        .article-meta {
+            display: flex;
+            justify-content: space-between;
+            color: #666;
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+        
+        .article-content p {
+            color: #666;
+            margin-bottom: 15px;
+        }
+        
+        .read-more {
+            color: #4b6cb7;
+            text-decoration: none;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+        }
+        
+        .read-more i {
+            margin-left: 5px;
+            transition: transform 0.3s;
+        }
+        
+        .read-more:hover i {
+            transform: translateX(5px);
+        }
+        
+        /* Pied de page */
+        footer {
+            background: #182848;
+            color: white;
+            padding: 60px 0 20px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-column h3 {
+            font-size: 20px;
+            margin-bottom: 20px;
+            color: #ffcc00;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-column ul li a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-column ul li a:hover {
+            color: #ffcc00;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: #ccc;
+            font-size: 14px;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            nav ul {
+                margin-top: 20px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            nav ul li {
+                margin: 5px 10px;
+            }
+            
+            .hero h1 {
+                font-size: 32px;
+            }
+            
+            .hero p {
+                font-size: 18px;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- En-tête -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">mon<span>-cours</span>.com</div>
+                <nav>
+                    <ul>
+                        <li><a href="#">Accueil</a></li>
+                        <li><a href="#objectives">Objectifs</a></li>
+                        <li><a href="#categories">Catégories</a></li>
+                        <li><a href="#articles">Articles</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Section de présentation -->
+    <section class="hero">
+        <div class="container">
+            <h1>Votre plateforme d'apprentissage en ligne</h1>
+            <p>Découvrez des cours de qualité, des ressources pédagogiques et préparez vos concours avec nos formations spécialisées.</p>
+            <a href="#categories" class="btn">Explorer les cours</a>
+        </div>
+    </section>
+
+    <!-- Section objectifs -->
+    <section class="objectives" id="objectives">
+        <div class="container">
+            <div class="section-title">
+                <h2>Nos objectifs</h2>
+                <p>Mon-cours.com a pour mission de démocratiser l'accès à l'éducation en proposant des ressources pédagogiques de qualité pour tous.</p>
+            </div>
+            <div class="objectives-grid">
+                <div class="objective-card">
+                    <i class="fas fa-graduation-cap"></i>
+                    <h3>Accès à l'éducation pour tous</h3>
+                    <p>Nous croyons que l'éducation doit être accessible à tous, quel que soit le niveau ou le lieu de résidence.</p>
+                </div>
+                <div class="objective-card">
+                    <i class="fas fa-book-open"></i>
+                    <h3>Ressources pédagogiques de qualité</h3>
+                    <p>Nos contenus sont créés par des enseignants expérimentés et conformes aux programmes officiels.</p>
+                </div>
+                <div class="objective-card">
+                    <i class="fas fa-chart-line"></i>
+                    <h3>Suivi personnalisé</h3>
+                    <p>Nous proposons des outils de suivi pour mesurer vos progrès et adapter votre apprentissage.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section catégories -->
+    <section class="categories" id="categories">
+        <div class="container">
+            <div class="section-title">
+                <h2>Nos catégories de cours</h2>
+                <p>Explorez nos différentes catégories de cours et formations pour trouver ce qui correspond à vos besoins.</p>
+            </div>
+            <div class="categories-grid">
+                <div class="category-card">
+                    <div class="category-header">
+                        <h3>Cours</h3>
+                    </div>
+                    <div class="category-content">
+                        <ul>
+                            <li><a href="histoire.mon-cours.html"><i class="fas fa-landmark"></i> Histoire</a></li>
+                            <li><a href="francais.mon-cours.html"><i class="fas fa-book"></i> Français</a></li>
+                            <li><a href="svt.mon-cours.html"><i class="fas fa-leaf"></i> SVT</a></li>
+                            <li><a href="anglais.mon-cours.html"><i class="fas fa-globe"></i> Anglais</a></li>
+                            <li><a href="allemand.mon-cours.html"><i class="fas fa-language"></i> Allemand</a></li>
+                            <li><a href="philosophie.mon-cours.html"><i class="fas fa-brain"></i> Philosophie</a></li>
+                            <li><a href="dissertation.mon-cours.html"><i class="fas fa-pen-fancy"></i> Dissertation</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="category-card">
+                    <div class="category-header">
+                        <h3>Formation concours</h3>
+                    </div>
+                    <div class="category-content">
+                        <p>Préparez-vous efficacement aux différents concours avec nos formations spécialisées.</p>
+                        <a href="concours.mon-cours.html" class="concours-link">
+                            <i class="fas fa-trophy"></i> Accéder aux formations concours
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section articles -->
+    <section class="articles" id="articles">
+        <div class="container">
+            <div class="section-title">
+                <h2>Articles récents</h2>
+                <p>Découvrez nos derniers articles et ressources pédagogiques pour enrichir vos connaissances.</p>
+            </div>
+            <div class="articles-grid">
+                <div class="article-card">
+                    <div class="article-image" style="background-image: url('https://images.unsplash.com/photo-1481627834876-b7833e8f5570?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
+                    <div class="article-content">
+                        <h3>Comment réussir sa dissertation de philosophie</h3>
+                        <div class="article-meta">
+                            <span><i class="far fa-calendar"></i> 15 juin 2023</span>
+                            <span><i class="far fa-folder"></i> Philosophie</span>
+                        </div>
+                        <p>Découvrez les étapes clés pour structurer et rédiger une dissertation de philosophie réussie.</p>
+                        <a href="#" class="read-more">Lire la suite <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                <div class="article-card">
+                    <div class="article-image" style="background-image: url('https://images.unsplash.com/photo-1523240795612-9a054b0db644?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
+                    <div class="article-content">
+                        <h3>Les bases de la grammaire anglaise</h3>
+                        <div class="article-meta">
+                            <span><i class="far fa-calendar"></i> 10 juin 2023</span>
+                            <span><i class="far fa-folder"></i> Anglais</span>
+                        </div>
+                        <p>Maîtrisez les règles essentielles de la grammaire anglaise pour améliorer votre expression écrite et orale.</p>
+                        <a href="#" class="read-more">Lire la suite <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                <div class="article-card">
+                    <div class="article-image" style="background-image: url('https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
+                    <div class="article-content">
+                        <h3>Préparer les concours de la fonction publique</h3>
+                        <div class="article-meta">
+                            <span><i class="far fa-calendar"></i> 5 juin 2023</span>
+                            <span><i class="far fa-folder"></i> Concours</span>
+                        </div>
+                        <p>Notre guide complet pour vous préparer efficacement aux différents concours de la fonction publique.</p>
+                        <a href="#" class="read-more">Lire la suite <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pied de page -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Mon-cours.com</h3>
+                    <p>Votre plateforme d'apprentissage en ligne pour progresser à votre rythme.</p>
+                </div>
+                <div class="footer-column">
+                    <h3>Catégories</h3>
+                    <ul>
+                        <li><a href="#">Cours</a></li>
+                        <li><a href="concours.mon-cours.html">Formation concours</a></li>
+                        <li><a href="#">Ressources pédagogiques</a></li>
+                        <li><a href="#">Blog éducatif</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Liens utiles</h3>
+                    <ul>
+                        <li><a href="#">À propos</a></li>
+                        <li><a href="#">Contact</a></li>
+                        <li><a href="#">Mentions légales</a></li>
+                        <li><a href="#">Politique de confidentialité</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Nous suivre</h3>
+                    <ul>
+                        <li><a href="#"><i class="fab fa-facebook"></i> Facebook</a></li>
+                        <li><a href="#"><i class="fab fa-twitter"></i> Twitter</a></li>
+                        <li><a href="#"><i class="fab fa-instagram"></i> Instagram</a></li>
+                        <li><a href="#"><i class="fab fa-linkedin"></i> LinkedIn</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 Mon-cours.com - Tous droits réservés</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Script pour la navigation fluide
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Script pour la navigation vers les pages des matières
+        document.querySelectorAll('.category-content a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                // Dans un environnement réel, cette redirection fonctionnerait
+                // Pour cette démo, nous allons simplement afficher un message
+                if(this.getAttribute('href') && !this.getAttribute('href').startsWith('#')) {
+                    e.preventDefault();
+                    alert('Dans un environnement réel, vous seriez redirigé vers: ' + this.getAttribute('href'));
+                }
+            });
+        });
+    </script>
+</body>
+</html>
